@@ -9,10 +9,10 @@ dictionary_of_symbols = {
 }
 
 dictionary_of_points_per_symbol_pair = {
-    ")": 3,
-    "]": 57,
-    "}": 1197,
-    ">": 25137,
+    ")": 1,
+    "]": 2,
+    "}": 3,
+    ">": 4,
 }
 
 list_of_subtotals = []
