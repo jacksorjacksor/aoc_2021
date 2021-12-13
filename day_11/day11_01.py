@@ -4,10 +4,13 @@ with open("day_11/input.txt", "r+") as f:
 
 class DumboOctopus:
     def __init__(self, row, col, energy_level) -> None:
-        self.has_flashed_this_step = False
         self.row = row
         self.col = col
         self.energy_level = energy_level
+        self.has_flashed_this_step = False
+
+    def __repr__(self) -> str:
+        return f"{self.row},{self.col} || {self.energy_level} || {self.has_flashed_this_step}"
 
 
 # Make a list of octopus
@@ -58,6 +61,6 @@ while turn_counter < 100:
         if octopus.has_flashed_this_step:
             flash_counter += 1
             octopus.has_flashed_this_step = False
-            octopus.energy_level == 0
+            octopus.energy_level = 0
 
     print(f"{turn_counter} | {flash_counter}")
