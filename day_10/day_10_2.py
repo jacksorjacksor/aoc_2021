@@ -15,11 +15,10 @@ dictionary_of_points_per_symbol_pair = {
     ">": 25137,
 }
 
-subtotal = 0
-list_of_incomplete_lines = []
-
+list_of_subtotals = []
 for line in input_list:
-
+    good_list = True
+    subtotal = 0
     list_of_opened_chars = []
     for char in line:
         if char in dictionary_of_symbols.keys():  # Openings
@@ -29,10 +28,26 @@ for line in input_list:
                 # Check if closing matches LAST opening
                 list_of_opened_chars.pop(-1)
             else:
-                subtotal += dictionary_of_points_per_symbol_pair[char]
+                good_list = False
                 break
-        list_of_incomplete_lines.append(line)
+    if good_list:
+        print(line)
+        list_of_opened_chars.reverse()
+        print(list_of_opened_chars)
+        for char in list_of_opened_chars:
+            subtotal *= 5
+            subtotal += dictionary_of_points_per_symbol_pair[
+                dictionary_of_symbols[char]
+            ]
 
-print(subtotal)
-# Find and discard corrupted lines first
-# ???
+        list_of_subtotals.append(subtotal)
+
+list_of_subtotals.sort()
+
+for sub in list_of_subtotals:
+    print(sub)
+
+
+print(list_of_subtotals)
+
+print(list_of_subtotals[int(len(list_of_subtotals) / 2)])
